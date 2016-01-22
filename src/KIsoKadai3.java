@@ -11,14 +11,20 @@ import java.util.Scanner;
 public class KIsoKadai3 {
 
 	public static void main(String[] args) {
-		System.out.println("[メニュー] １：新規作成   ２：ファイル読み込み  ３：ファイル書き込み  \n");
-		int menu =new java.util.Scanner(System.in).nextInt();
-          switch (menu) {
+        int y =1;
+        while (y==1) {
+		System.out.println("[メニュー] １：新規作成   ２：ファイル読み込み  ３：ファイル書き込み  ４:終了４  \n");
+		int menu =new Scanner(System.in).nextInt();
+
+
+          switch(menu){
 		case 1:
 			Create();
+			y =1;;
 			break;
 		case 2:
 		   Read();
+		   y =1;
 		    break;
 		case 3:
 			System.out.println("[メニュー]  １：追記  ２：上書き");
@@ -28,16 +34,21 @@ public class KIsoKadai3 {
 			}else if (menu2 == 2) {
 				write2();
 			}
-			    break;
-		default:
+			y =1;
 			break;
+		case 4:
+		   y = 0;
+		   System.out.println("\n終了します\n");
+		   break;
+
+		 }
 		}
 	}
 
 	public static void Create() {
 		 System.out.println("ファイルを作成します");
 		 System.out.println("ファイル名をどうぞ！");
-		String namefile =new java.util.Scanner(System.in).nextLine();
+		String namefile =new Scanner(System.in).nextLine();
 		String fileplase ="C:\\users\\internous\\";
 		    File newfile = new File( fileplase + namefile);
 
@@ -50,25 +61,26 @@ public class KIsoKadai3 {
 		    }catch(IOException e){
 		      System.out.println(e);
 		    }
+
+
 		  }
 
 	 public static void Read(){
 		 System.out.println("どのファイルを読みますか？");
-	    	String namefile =new java.util.Scanner(System.in).nextLine();
+	    	String namefile =new Scanner(System.in).nextLine();
 	    	String plase = "C:\\users\\internous\\";
 	    		    try{
 	    		    	System.out.println("ファイルを読み込みます \n");
 	    		    	File file = new File(plase + namefile );
 	    		      if (checkBeforeReadfile(file)){
 	    		        BufferedReader br = new BufferedReader(new FileReader(file));
-
 	    		        String str;
+
 	    		        while((str = br.readLine()) != null){
 	    		          System.out.println(str);
-
 	    		        }
-
 	    		        br.close();
+	    		        System.out.println("\n ファイルの読み込みを終了します");
 	    		      }else{
 	    		        System.out.println("ファイルが見つからないか開けません");
 	    		      }
@@ -99,13 +111,13 @@ public class KIsoKadai3 {
 
 	     	      if (checkBeforeWritefile(file)){
 	     	        FileWriter filewriter = new FileWriter(file, true);
-	                 System.out.println("内容");
+	                 System.out.println("\n内容\n");
 	                 String bun =new Scanner(System.in).nextLine();
 	     	        filewriter.write(bun + "\n");
 	     	        System.out.println("\n");
 	     	        String bun2  =new Scanner(System.in).nextLine();
 	     	        filewriter.write(bun2 + "\n");
-                   System.out.println("入力を終了します");
+                   System.out.println("\n入力を終了します\n");
 	     	        filewriter.close();
 	     	      }else{
 	     	        System.out.println("ファイルに書き込めません");
@@ -135,13 +147,13 @@ public class KIsoKadai3 {
 
 	    	      if (checkBeforeWritefile(file)){
 	    	        FileWriter filewriter = new FileWriter(file);
-	    	        System.out.println("内容");
+	    	        System.out.println("\n内容\n");
 	                 String bun =new Scanner(System.in).nextLine();
 	    	        filewriter.write(bun + "\n");
 	    	        System.out.println("\n");
 	     	        String bun2  =new Scanner(System.in).nextLine();
 	    	        filewriter.write(bun2 + "\n");
-	    	        System.out.println("入力を終了します"); 
+	    	        System.out.println("\n入力を終了します\n");
 	    	        filewriter.close();
 	    	      }else{
 	    	        System.out.println("ファイルに書き込めません");
@@ -150,7 +162,6 @@ public class KIsoKadai3 {
 	    	      System.out.println(e);
 	    	    }
 	    	  }
-
 	    	  private static boolean checkBeforeWritefile1(File file){
 	    	    if (file.exists()){
 	    	      if (file.isFile() && file.canWrite()){
