@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,19 +7,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class KIsoKadai3 {
 
 	public static void main(String[] args) {
         int y =1;
         while (y==1) {
-		System.out.println("[メニュー] １：新規作成   ２：ファイル読み込み  ３：ファイル書き込み  ４:終了４  \n");
+		System.out.println("[メニュー] １：新規作成   ２：ファイル読み込み  ３：ファイル書き込み  ４:終了  \n");
 		int menu =new Scanner(System.in).nextInt();
-
-
           switch(menu){
 		case 1:
 			Create();
-			y =1;;
+			y =1;
 			break;
 		case 2:
 		   Read();
@@ -31,10 +29,11 @@ public class KIsoKadai3 {
 			int menu2 =new java.util.Scanner(System.in).nextInt();
 			if (menu2 == 1) {
 				write();
+			y = 1;
 			}else if (menu2 == 2) {
 				write2();
 			}
-			y =1;
+			y = 1;
 			break;
 		case 4:
 		   y = 0;
@@ -80,7 +79,7 @@ public class KIsoKadai3 {
 	    		          System.out.println(str);
 	    		        }
 	    		        br.close();
-	    		        System.out.println("\n ファイルの読み込みを終了します");
+	    		        System.out.println("\nファイルの読み込みを終了します\n");
 	    		      }else{
 	    		        System.out.println("ファイルが見つからないか開けません");
 	    		      }
@@ -108,9 +107,9 @@ public class KIsoKadai3 {
 	     	 String plase = "C:\\users\\internous\\";
 	     	 try{
 	     	      File file = new File(plase + namefile);
-
 	     	      if (checkBeforeWritefile(file)){
 	     	        FileWriter filewriter = new FileWriter(file, true);
+
 	                 System.out.println("\n内容\n");
 	                 String bun =new Scanner(System.in).nextLine();
 	     	        filewriter.write(bun + "\n");
@@ -170,8 +169,8 @@ public class KIsoKadai3 {
 	    	    }
 
 	    	    return false;
-	    	  }
-			}
+		}
+}
 
 
 
