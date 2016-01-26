@@ -47,9 +47,12 @@ public class KIsoKadai3 {
 	public static void Create() {
 		 System.out.println("ファイルを作成します");
 		 System.out.println("ファイル名をどうぞ！");
+		 System.out.println("ファイルパスは、絶対パスで記入してください");
+		 System.out.println("例  C:\\\\users\\\\internous\\\\Desktop\\\\test.txt" +  "\n");
+
 		String namefile =new Scanner(System.in).nextLine();
-		String fileplase ="C:\\users\\internous\\";
-		    File newfile = new File( fileplase + namefile);
+		//String fileplase ="C:\\users\\internous\\Desktop\\";
+		    File newfile = new File(  namefile);   //fileplase
 
 		    try{
 		      if (newfile.createNewFile()){
@@ -66,11 +69,14 @@ public class KIsoKadai3 {
 
 	 public static void Read(){
 		 System.out.println("どのファイルを読みますか？");
-	    	String namefile =new Scanner(System.in).nextLine();
-	    	String plase = "C:\\users\\internous\\";
+		 System.out.println("ファイル名をどうぞ！");
+		 System.out.println("ファイルパスは、絶対パスで記入してください");
+		 System.out.println("例  C:\\\\users\\\\internous\\\\Desktop\\\\test.txt" +  "\n");
+	     String namefile =new Scanner(System.in).nextLine();
+	    // String plase = "C:\\users\\internous\\Desktop\\";
 	    		    try{
 	    		    	System.out.println("ファイルを読み込みます \n");
-	    		    	File file = new File(plase + namefile );
+	    		    	File file = new File(namefile );
 	    		      if (checkBeforeReadfile(file)){
 	    		        BufferedReader br = new BufferedReader(new FileReader(file));
 	    		        String str;
@@ -103,10 +109,13 @@ public class KIsoKadai3 {
 	      public static void write(){
 	    	  System.out.println("ファイルに書き込みをします");
 	     	 System.out.println("書き込みたいファイル名をどうぞ！");
+	       	 System.out.println("ファイル名をどうぞ！");
+			 System.out.println("ファイルパスは、絶対パスで記入してください");
+			 System.out.println("例  C:\\\\users\\\\internous\\\\Desktop\\\\test.txt" +  "\n");
 	     	 String namefile =new Scanner(System.in).nextLine();
-	     	 String plase = "C:\\users\\internous\\";
+	     	//  String plase = "C:\\users\\internous\\";
 	     	 try{
-	     	      File file = new File(plase + namefile);
+	     	      File file = new File( namefile);
 	     	      if (checkBeforeWritefile(file)){
 	     	        FileWriter filewriter = new FileWriter(file, true);
 
@@ -138,11 +147,14 @@ public class KIsoKadai3 {
 	    public static void write2() {
 	    	 System.out.println("ファイルに書き込みをします");
 	     	 System.out.println("書き込みたいファイル名をどうぞ！");
+	     	 System.out.println("ファイル名をどうぞ！");
+			 System.out.println("ファイルパスは、絶対パスで記入してください");
+			 System.out.println("例  C:\\\\users\\\\internous\\\\Desktop\\\\test.txt" +  "\n");
 	     	 String namefile =new Scanner(System.in).nextLine();
-	     	 String plase = "C:\\users\\internous\\";
+	    // 	 String plase = "C:\\users\\internous\\";
 
 	    	try{
-	    	      File file = new File(plase + namefile);
+	    	      File file = new File( namefile);
 
 	    	      if (checkBeforeWritefile(file)){
 	    	        FileWriter filewriter = new FileWriter(file);
