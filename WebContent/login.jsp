@@ -13,11 +13,11 @@
 	<h3>ログイン</h3>
   		<s:form action ="LoginAction">
   			<p>ユーザーID：
-  				<s:textfield  label ="ID" />
+  				<s:textfield  label ="ID"  name = "id" />
  			 <p>パスワード：
-  				<s:password  label = "Password" />
+  				<s:password  label = "Password"  name = "password"/>
 				<p>
-			<s:submit  value = "ログイン"></s:submit>
+			<s:submit  value = "ログイン"/>
   		</s:form>
 </center>
 </body>

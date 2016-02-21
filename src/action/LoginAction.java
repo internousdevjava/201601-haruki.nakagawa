@@ -7,68 +7,98 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.LoginDAO;
+import dto.LoginDTO;
 
+/**ログインするためのクラス
+ * @author H.Nakagawa
+ * @version 1.0
+ * @since 1.0
+ */
 public class LoginAction extends ActionSupport implements SessionAware {
-    public String id;
+	/**
+	 * シリアルID
+	 */
+	private static final long serialVersionUID = 4835553682142918836L;
+	/**
+	 * ユーザーID
+	 */
+	public String id;
+	/**
+	 * ユーザーpassword
+	 */
     public String password;
+    /**
+	 * ログイン判定のためのセッション
+	 */
     public Map<String, Object>session;
-
+   /**
+	 * ログイン認証を実行するメソッド
+	 *   ログイン成功時SUCCESSを返し、失敗時ERRORを返す
+	 */
 public String execute(){
 
-    LoginDAO dao = new LoginDAO(); //LoginDAOクラスを作成すると波線が消える
+    LoginDAO dao = new LoginDAO();
 
     boolean res = dao.select(id,password);
 
     if(!res){
         return ERROR;
     }
+     LoginDTO dto = new LoginDTO(id,password);
 
-    session.put("id", id );
 
+    session.put("id", dto.getId());
+System.out.println("t");
     return SUCCESS;
-}
-
+  }
 /**
- * @return id
+ * ユーザーIDを取得するためのメソッド
+ * @return id ユーザーID
  */
-public String getId() {
+	public String getId() {
     return id;
 }
 
 /**
- * @param id セットする id
+ * ユーザーIDを格納するためのメソッド
+ * @param id ユーザーID
  */
 public void setId(String id) {
     this.id = id;
 }
 
 /**
- * @return password
+ * パスワードを取得するためのメソッド
+ * @return password パスワード
  */
 public String getPassword() {
     return password;
 }
 
 /**
- * @param password セットする password
+ * パスワードを格納するためのメソッド
+ * @param password パスワード
  */
 public void setPassword(String password) {
     this.password = password;
 }
 
 /**
- * @return session
+ * ログイン判定のセッションを取得するメソッド
+ * @return session ログイン判定のセッション
  */
 public Map<String, Object> getSession() {
     return session;
 }
-
-@Override
-public void setSession(Map<String, Object> arg0) {
-    // TODO 自動生成されたメソッド・スタブ
-
+/**
+* ログイン判定のセッションを格納するためのメソッド
+* @param session ログイン判定のセッション
+*/
+public void setSession(Map<String, Object> session) {
+	this.session = session;
+   }
 }
 
-}
+
 
 

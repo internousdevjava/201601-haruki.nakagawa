@@ -7,20 +7,23 @@ import java.sql.SQLException;
 
 import utill.DBConnector;
 
+/**
+* ログインをするためのクラス
+* @author H.Nakagawa
+* @since 1.0
+* @version 1.0
+*/
 public class LoginDAO {
     private boolean res;
-    private Connection con;
-    private String sql;
-    private PreparedStatement ps;
     private ResultSet rs;
 
     public  boolean select(String id,String password){
         res = false;
 
       try{
-          con = (Connection)DBConnector.getConnection();
-          sql = "select * FROM login WHERE " + "user_id = ? AND password = ? ";
-          ps = con.prepareStatement(sql);
+    	  Connection con =DBConnector.getConnection();
+    	  String sql = "select * FROM login WHERE " + "id = ? AND password = ? ";
+    	  PreparedStatement  ps = con.prepareStatement(sql);
           ps.setString(1, id);
           ps.setString(2, password);
           rs = ps.executeQuery();
@@ -29,12 +32,6 @@ public class LoginDAO {
           }
       } catch (SQLException e) {
           e.printStackTrace();
-      } finally {
-          try{
-              con.close();
-          } catch(SQLException e_2) {
-              e_2.printStackTrace();
-          }
       }
       return res;
   }

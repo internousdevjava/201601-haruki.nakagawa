@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>ログイン成功</title>
 </head>
 <body>
-	<body>
+<center>
 	<s:property value="id"/> さん<br>
 	  ログインしました。<br>
-
+</center>
 </body>
 </html>

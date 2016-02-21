@@ -21,7 +21,7 @@ public class DBConnector{
 	private static String driverName = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost/LoginTest"; //struts2 DB名
 	private static String user = "root"; //DBのユーザ名
-	private static String pass = "mysql";  //DBに接続するときのパスワード
+	private static String pass = "ha828008";  //DBに接続するときのパスワード
 	public static Connection getConnection(){
 
 		Connection con = null;
